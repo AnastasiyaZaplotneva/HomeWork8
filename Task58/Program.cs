@@ -4,43 +4,43 @@ Console.Clear();
 
 int[,] FillMatrixRndInt(int rows, int columns, int min, int max)
 {
-int[,] matrix = new int[rows, columns];
-Random rnd = new Random();
+    int[,] matrix = new int[rows, columns];
+    Random rnd = new Random();
 
-for (int i = 0; i < matrix.GetLength(0); i++) // 2
-{
-    for (int j = 0; j < matrix.GetLength(1); j++) //
+    for (int i = 0; i < matrix.GetLength(0); i++) // 2
     {
-        matrix[i, j] = rnd.Next(min, max + 1); // 2 - 3
+        for (int j = 0; j < matrix.GetLength(1); j++) //
+        {
+            matrix[i, j] = rnd.Next(min, max + 1); // 2 - 3
+        }
     }
-}
-return matrix;
+    return matrix;
 }
 
 void PrintMatrix(int[,] matrix)
 {
-for (int i = 0; i < matrix.GetLength(0); i++)
-{
-    Console.Write("|");
-    for (int j = 0; j < matrix.GetLength(1); j++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        if (j < matrix.GetLength(1) - 1) Console.Write($"{matrix[i,j], 5} |");
-        else Console.Write($"{matrix[i,j], 5}");
+        Console.Write("|");
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            if (j < matrix.GetLength(1) - 1) Console.Write($"{matrix[i, j],5} |");
+            else Console.Write($"{matrix[i, j],5}");
+        }
+        Console.WriteLine(" |");
     }
-    Console.WriteLine(" |");
-}
 }
 
 int[,] MatrixProduct(int[,] matrix1, int[,] matrix2)
 {
-    int[,] matrixProduct = new int [matrix1.GetLength(0), matrix2.GetLength(1)];
+    int[,] matrixProduct = new int[matrix1.GetLength(0), matrix2.GetLength(1)];
     for (int i = 0; i < matrix1.GetLength(0); i++)
     {
         for (int j = 0; j < matrix2.GetLength(1); j++)
         {
             for (int k = 0; k < matrix2.GetLength(0); k++)
             {
-                matrixProduct[i,j] += matrix1[i,k] * matrix2[k,j];
+                matrixProduct[i, j] += matrix1[i, k] * matrix2[k, j];
             }
         }
     }
@@ -62,7 +62,7 @@ PrintMatrix(firstMassive2D);
 Console.WriteLine();
 PrintMatrix(secondMassive2D);
 
-if(column1 != row2)
+if (column1 != row2)
 {
     Console.WriteLine("Эти матрицы нельзя перемножить");
 }
